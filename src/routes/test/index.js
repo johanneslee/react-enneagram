@@ -9,11 +9,10 @@ const Test = () => {
 	const [perPage, setPerPage] = useState(20);
 	const offset = (pageNo - 1) * perPage;
 
-	const handleClick = function (index, value) {
+	const handleClick = (index, value) => {
 		let _answers = answers;
 		_answers[index] = value;
 		setAnswers(_answers);
-		console.log(answers);
 	}
 
 	return (
@@ -22,20 +21,28 @@ const Test = () => {
 				{
 					questions
 						.slice(offset, offset + perPage)
-						.map(({ type, question }, index) => (
-							<article key={index}>
-								<div>
-									<p>{offset + index + 1}. {question}</p>
-								</div>
-								<div className={style.btnWrap}>
-									<button className={style.btn} onClick={handleClick}>1점</button>
-									<button className={style.btn} onClick={handleClick}>2점</button>
-									<button className={style.btn} onClick={handleClick}>3점</button>
-									<button className={style.btn} onClick={handleClick}>4점</button>
-									<button className={style.btn} onClick={handleClick}>5점</button>
-								</div>								
-							</article>
-						))
+						.map(({ type, question }, index) => {
+              return (
+                <article key={index}>
+                  <div>
+                    <p>{offset + index + 1}. {question}</p>
+                  </div>
+                  <div className={style.btnWrap}>
+                    {
+                      [1,2,3,4,5].map(value => {
+                        return (
+                          <button
+                            key={value}
+                            className={style.btn}
+                            onClick={() => handleClick(index, value)}
+                          >{value}점</button>
+                        )
+                      })
+                    }
+                  </div>								
+                </article>
+              )
+            })
 				}
 			</div>
 			<div className={style.buttonWrap}>
