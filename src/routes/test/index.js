@@ -1,18 +1,33 @@
 import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import { useState, useRef } from 'preact/hooks';
 import style from './style.css';
 import questions from '../../assets/jsons/questions.json';
 
 const Test = () => {
+  const ref = useRef(null);
+
 	const [answers, setAnswers] = useState([]);
 	const [pageNo, setPageNo] = useState(1);
 	const [perPage, setPerPage] = useState(20);
 	const offset = (pageNo - 1) * perPage;
 
-	const handleClick = (index, value) => {
+	const handleClick = event => {
+    const index = event.target.attributes.index.value;
+    const value = event.target.value;
+
 		let _answers = answers;
 		_answers[index] = value;
 		setAnswers(_answers);
+
+    const btnActives = document.getElementsByClassName('btnActive');
+    console.log(ref.current.classList);
+    for (let btnActive in btnActives) {
+      console.log(btnActive);
+      console.log(btnActive.target);
+      btnActive.classList.replace('btnActive', 'btn');
+    }
+
+    event.target.className = 'btnActive';
 	}
 
 	return (
@@ -23,7 +38,7 @@ const Test = () => {
 						.slice(offset, offset + perPage)
 						.map(({ type, question }, index) => {
               return (
-                <article key={index}>
+                <article ref={ref} key={index}>
                   <div>
                     <p>{offset + index + 1}. {question}</p>
                   </div>
@@ -34,7 +49,9 @@ const Test = () => {
                           <button
                             key={value}
                             className={style.btn}
-                            onClick={() => handleClick(index, value)}
+                            index={index}
+                            value={value}
+                            onClick={event => handleClick(event)}
                           >{value}점</button>
                         )
                       })

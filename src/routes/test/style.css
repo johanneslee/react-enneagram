@@ -20,11 +20,11 @@
 	display: flex;
 	justify-content: space-between;
 	margin: 0 auto;
-	width: 60%;
+	width: 80%;
 }
 
 .btn {
-	padding: 6px min(12px, 5%);
+	padding: 6px 5%;
   min-width: 48px;
 	font-size: 12px;
 	color: #ffffff;
@@ -35,7 +35,7 @@
 	opacity: 0.8;
 }
 
-.btnOn {
+.btnActive {
 	padding: 4px 5%;
 	border: 1px solid #43216d;
 	font-size: 12px;
