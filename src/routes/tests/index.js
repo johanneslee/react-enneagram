@@ -14,26 +14,31 @@ const Tests = () => {
   };
 
 	return (
-		<div className={style.Tests}>
-			<div className={style.articleWrap}>
-				{
-					questions
-						.slice(offset, offset + perPage)
-						.map(({ type, question }, index) => {
+		<div className={style.tests}>
+      <div className={style.articleWrap}>
+        {
+          questions
+            .slice(offset, offset + perPage)
+            .map(({ type, question }, index) => {
               return (
                 <Test
-                  key={index}
+                  key={index + 1}
+                  index={index + 1}
+                  offset={offset}
                   type={type}
                   question={question}
                 />
               )
             })
-				}
-			</div>
-			<div className={style.buttonWrap}>
-				<button onClick={() => handleClick()}>Next</button>
-			</div>
-		</div>
+        }
+      </div>
+      <div className={style.buttonWrap}>
+        <button
+          className={style.buttonNext}
+          onClick={() => handleClick()}
+        >Next</button>
+      </div>
+    </div>
 	)
 };
 
