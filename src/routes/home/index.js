@@ -12,7 +12,7 @@ const Home = () => {
 
 	return (
 		<div className={`${style.home} ${fadeIn ? style.fadeIn : ''}`}>
-			<a type="button" className={style.btn} href="/test">Start Test</a>
+			<a type="button" className={style.btn} href="/tests">Start Test</a>
 		</div>
 	)
 };
