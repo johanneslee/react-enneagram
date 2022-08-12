@@ -1,1 +1,27 @@
-.test {}
+.test {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+}
+
+.buttonWrap {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	width: 80%;
+}
+
+input[type=radio] {
+	display: none;
+}
+
+.button {
+	padding: 4px 5%;
+	background-color: #43216d;
+	color: #ffffff;
+	font-size: 12px;
+}
