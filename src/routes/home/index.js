@@ -11,9 +11,9 @@ const Home = () => {
 	}, 1000);
 
 	return (
-		<div className={`${style.home} ${fadeIn ? style.fadeIn : ''}`}>
-			<a type="button" className={style.btn} href="/tests">Start Test</a>
-		</div>
+		<main className={`${style.home} ${fadeIn ? style.fadeIn : ''}`}>
+			<a className={style.btn} href="/tests">Start Test</a>
+		</main>
 	)
 };
 

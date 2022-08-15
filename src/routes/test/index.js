@@ -17,10 +17,10 @@ const Test = (props) => {
 			key={index}
 			className={style.test}
 		>
-			<div>
+			<h1>
 				<p>{offset + index}. {question}</p>
-			</div>
-			<div className={style.buttonWrap}>
+			</h1>
+			<fieldset className={style.buttonWrap}>
 				{
 					answers.map((answer, buttonIndex) => {
 						return (
@@ -37,7 +37,7 @@ const Test = (props) => {
 						)
 					})
 				}
-			</div>								
+			</fieldset>								
 		</article>
 	)
 };

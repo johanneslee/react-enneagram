@@ -1,29 +1,29 @@
 .tests {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 	margin: 0 auto;
-	padding-top: 56px;
 	width: 75vw;
 	min-width: 400px;
-	min-height: calc(100vh - 56px);
+	height: calc(100vh - 54px);
 }
 
-.buttonWrap {
+.articleContainer {
+	height: calc(100vh - 54px - 54px);
+  overflow-y: scroll;
+}
+
+.buttonContainer {
 	display: flex;
-	justify-content: space-between;
-	margin: 0 auto;
-	width: 80%;
+	align-items: center;
+  height: 54px;
 }
 
 .buttonNext {
-	margin: 0 auto;
-	padding: 8px;
-  width: 100%;
-	font-size: 16px;
+	padding: 8px 16px;
 	color: #ffffff;
-	background: #43216d;
+	background: #7452A4;
 }
 
 .btn:hover {
@@ -32,8 +32,8 @@
 
 .btnActive {
 	padding: 4px 5%;
-	border: 1px solid #43216d;
+	border: 1px solid #7452A4;
 	font-size: 12px;
-	color: #43216d;
+	color: #7452A4;
 	background: #ffffff;
 }
