@@ -6,38 +6,32 @@ const Test = (props) => {
 	const offset = props.offset;
 	const type = props.type;
 	const question = props.question;
+
 	const answers = [1,2,3,4,5];
 
-	const handleChange = (event) => {
+	const handleClick = (event) => {
 		console.log(event);
 	};
 
 	return (
 		<article
 			key={index}
-			className={style.test}
-		>
-			<h1>
-				<p>{offset + index}. {question}</p>
-			</h1>
-			<fieldset className={style.buttonWrap}>
+			className={style.test}>
+			<p>{offset + index}. {question}</p>
+			<div className={style.buttonWrap}>
 				{
 					answers.map((answer, buttonIndex) => {
 						return (
-							<label
+							<button
 								key={buttonIndex}
-								className={style.button}>
-								<input
-									type="radio"
-									name="answer"
-									value={answer}
-									onChange={(event) => handleChange(event)} />
+								className={style.button}
+								onClick={(event) => handleClick(event)} >
 								{answer}점
-							</label>
+							</button>
 						)
 					})
 				}
-			</fieldset>								
+			</div>								
 		</article>
 	)
 };
