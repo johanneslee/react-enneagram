@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { useState } from 'preact/hooks';
 import style from './style.css';
 
 const Test = (props) => {
@@ -7,10 +8,13 @@ const Test = (props) => {
 	const type = props.type;
 	const question = props.question;
 
-	const answers = [1,2,3,4,5];
+	const [answer, setAnswers] = useState(0);
 
-	const handleClick = (event) => {
-		console.log(event);
+	const options = [1,2,3,4,5];
+
+	const handleClick = (option) => {
+		setAnswers(option);
+		props.onSelectAnswer(type, answer);
 	};
 
 	return (
@@ -20,13 +24,13 @@ const Test = (props) => {
 			<p>{offset + index}. {question}</p>
 			<div className={style.buttonWrap}>
 				{
-					answers.map((answer, buttonIndex) => {
+					options.map((option, buttonIndex) => {
 						return (
 							<button
 								key={buttonIndex}
-								className={style.button}
-								onClick={(event) => handleClick(event)} >
-								{answer}점
+								className={(answer === option) ? style.buttonOn : style.buttonOff}
+								onClick={() => handleClick(option)} >
+								{option}점
 							</button>
 						)
 					})

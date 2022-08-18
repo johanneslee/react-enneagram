@@ -18,6 +18,10 @@ const Tests = () => {
     setPageNo(pageNo + 1);
   };
 
+  const handleAnswer = (type, answer) => {
+    
+  }
+
 	return (
 		<main className={style.tests}>
       <section className={style.articleContainer}>
@@ -32,6 +36,7 @@ const Tests = () => {
                   offset={offset}
                   type={type}
                   question={question}
+                  onSelectAnswer={handleAnswer}
                 />
               )
             })

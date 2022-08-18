@@ -21,7 +21,17 @@
 	width: 80%;
 }
 
-.button {
+.buttonOn {
+  border: 1px solid #7452A4;
+  width: 15%;
+  height: 24px;
+  line-height: 24px;
+	background-color: #ffffff;
+	color: #7452A4;
+	font-size: 12px;
+}
+
+.buttonOff {
   width: 15%;
   height: 24px;
   line-height: 24px;
