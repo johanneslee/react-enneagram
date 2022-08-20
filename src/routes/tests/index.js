@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import style from './style.css';
 import questions from '../../assets/jsons/questions.json';
-import Test from '../test';
+import Test from '../../components/test';
 
 const Tests = () => {
   /*
