@@ -10,16 +10,18 @@ const Tests = () => {
   Answers 받아서 State로 보유
   Types 계산해서 이동
   */
+  const [answers, setAnswers] = useState([]);
 	const [pageNo, setPageNo] = useState(1);
-	const [perPage, setPerPage] = useState(20);
-	const offset = (pageNo - 1) * perPage;
+	const offset = (pageNo - 1) * 20;
 
   const handleClick = () => {
     setPageNo(pageNo + 1);
   };
 
-  const handleAnswer = (type, answer) => {
-    
+  const handleAnswer = (order, type, answer) => {
+    console.log(answers.filter(answer => {
+      return answer.order === order;
+    }));
   }
 
 	return (
@@ -27,13 +29,12 @@ const Tests = () => {
       <section className={style.articleContainer}>
         {
           questions
-            .slice(offset, offset + perPage)
+            .slice(offset, offset + 20)
             .map(({ type, question }, index) => {
               return (
                 <Test
-                  key={index + 1}
-                  index={index + 1}
-                  offset={offset}
+                  key={index}
+                  order={offset + (index + 1)}
                   type={type}
                   question={question}
                   onSelectAnswer={handleAnswer}

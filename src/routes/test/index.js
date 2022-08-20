@@ -1,12 +1,12 @@
 import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import style from './style.css';
 
 const Test = (props) => {
-	const index = props.index;
-	const offset = props.offset;
+	const order = props.order;
 	const type = props.type;
 	const question = props.question;
+	const onSelectAnswer = props.onSelectAnswer;
 
 	const [answer, setAnswers] = useState(0);
 
@@ -14,27 +14,32 @@ const Test = (props) => {
 
 	const handleClick = (option) => {
 		setAnswers(option);
-		props.onSelectAnswer(type, answer);
 	};
+
+	useEffect(() => {		
+		if(answer > 0) {
+			onSelectAnswer(order, type, answer);
+		}
+	}, [answer]);
 
 	return (
 		<article
-			key={index}
+			key={order}
 			className={style.test}>
-			<p>{offset + index}. {question}</p>
+			<p>{`${order}. ${question}`}</p>
 			<div className={style.buttonWrap}>
-				{
-					options.map((option, buttonIndex) => {
-						return (
-							<button
-								key={buttonIndex}
-								className={(answer === option) ? style.buttonOn : style.buttonOff}
-								onClick={() => handleClick(option)} >
-								{option}점
-							</button>
-						)
-					})
-				}
+			{
+				options.map((option, buttonIndex) => {
+					return (
+						<button
+							key={buttonIndex}
+							className={(answer === option) ? style.buttonOn : style.buttonOff}
+							onClick={() => handleClick(option)} >
+							{`${option}점`}
+						</button>
+					)
+				})
+			}
 			</div>								
 		</article>
 	)
