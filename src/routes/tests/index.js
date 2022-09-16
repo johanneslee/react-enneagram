@@ -1,28 +1,40 @@
 import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import style from './style.css';
 import questions from '../../assets/jsons/questions.json';
 import Test from '../../components/test';
 
 const Tests = () => {
-  /*
-  Questions 받아서 State로 보유
-  Answers 받아서 State로 보유
-  Types 계산해서 이동
-  */
+  const [types, setTypes] = useState([]);
   const [answers, setAnswers] = useState([]);
 	const [pageNo, setPageNo] = useState(1);
 	const offset = (pageNo - 1) * 20;
+  const questionsCount = 20;
 
   const handleClick = () => {
-    setPageNo(pageNo + 1);
+    if (answers.length === pageNo * 20) {
+      if (answers.length === questions.length) {
+        let arr, sum;
+        for(let i = 1;i <= 9;i++) {
+          sum = 0;
+          arr = answers.filter(answer => answer.type === i);
+          arr.forEach(answer => sum += answer.value);
+        }
+      } else {
+        setPageNo(pageNo + 1);
+      }
+    } 
   };
 
-  const handleAnswer = (order, type, answer) => {
-    console.log(answers.filter(answer => {
-      return answer.order === order;
-    }));
+  const selectAnswer = (obj) => {
+    const arr = answers.filter(answer => answer.order !== obj.order);
+    arr.push(obj);
+    setAnswers(arr);
   }
+
+  useEffect(() => {
+    console.log(answers);
+  }, [answers])
 
 	return (
 		<main className={style.tests}>
@@ -31,13 +43,14 @@ const Tests = () => {
           questions
             .slice(offset, offset + 20)
             .map(({ type, question }, index) => {
+              const order = offset + (index + 1);
               return (
                 <Test
-                  key={index}
-                  order={offset + (index + 1)}
+                  key={order}
+                  order={order}
                   type={type}
                   question={question}
-                  onSelectAnswer={handleAnswer}
+                  onSelectOption={selectAnswer}
                 />
               )
             })
