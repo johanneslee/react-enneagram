@@ -12,6 +12,7 @@ const Tests = () => {
   const questionsCount = 20;
 
   const handleClick = () => {
+    <Link activeClassName={style.active} href="/">Home</Link>
     if (answers.length === pageNo * 20) {
       if (answers.length === questions.length) {
         let arr, sum;
@@ -20,6 +21,7 @@ const Tests = () => {
           arr = answers.filter(answer => answer.type === i);
           arr.forEach(answer => sum += answer.value);
         }
+
       } else {
         setPageNo(pageNo + 1);
       }
