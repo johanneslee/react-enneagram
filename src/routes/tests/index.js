@@ -1,42 +1,28 @@
 import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
+import { route } from 'preact-router';
 import style from './style.css';
 import questions from '../../assets/jsons/questions.json';
 import Test from '../../components/test';
 
 const Tests = () => {
-  const [types, setTypes] = useState([]);
   const [answers, setAnswers] = useState([]);
 	const [pageNo, setPageNo] = useState(1);
 	const offset = (pageNo - 1) * 20;
-  const questionsCount = 20;
 
   const handleClick = () => {
-    <Link activeClassName={style.active} href="/">Home</Link>
-    if (answers.length === pageNo * 20) {
-      if (answers.length === questions.length) {
-        let arr, sum;
-        for(let i = 1;i <= 9;i++) {
-          sum = 0;
-          arr = answers.filter(answer => answer.type === i);
-          arr.forEach(answer => sum += answer.value);
-        }
-
-      } else {
-        setPageNo(pageNo + 1);
-      }
-    } 
+    if (pageNo === 1) {
+      route(`/results?answers=${JSON.stringify(answers)}`);
+    } else {
+      setPageNo(pageNo + 1);
+    }
   };
 
   const selectAnswer = (obj) => {
-    const arr = answers.filter(answer => answer.order !== obj.order);
-    arr.push(obj);
-    setAnswers(arr);
+    const currAnswers = answers;
+    currAnswers.push(obj);
+    setAnswers(currAnswers);
   }
-
-  useEffect(() => {
-    console.log(answers);
-  }, [answers])
 
 	return (
 		<main className={style.tests}>

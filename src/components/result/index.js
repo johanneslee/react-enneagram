@@ -5,8 +5,10 @@ import { Options } from '../../datas/Options';
 import { Answer } from '../../datas/Answer';
 
 const Result = (props) => {
+  const type = props.type;
+
 	return (
-		<>Hello</>
+		<>{type}</>
 	)
 };
 

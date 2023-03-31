@@ -6,7 +6,6 @@ const Home = () => {
 	const [fadeIn, setFadeIn] = useState(false);
 
 	setTimeout(() => {
-		console.log('timeout');
 		setFadeIn(true);
 	}, 1000);
 

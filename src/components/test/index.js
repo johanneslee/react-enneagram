@@ -16,12 +16,12 @@ const Test = (props) => {
 		setOption(option);
 	};
 
-	useEffect(() => {		
+	useEffect(() => {
 		if(option > 0) {
-      const answer = new Answer(order, type, option)
+      const answer = new Answer(order, type, option);
 			onSelectOption(answer);
 		}
-	}, [option]);
+	}, [onSelectOption, option, order, type]);
 
 	return (
 		<article
