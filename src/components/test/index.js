@@ -41,7 +41,7 @@ const Test = (props) => {
 					)
 				})
 			}
-			</div>								
+			</div>
 		</article>
 	)
 };

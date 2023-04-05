@@ -1,2 +1,24 @@
 .result {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	width: 75vw;
+	height: calc(100vh - 54px);
+}
+
+.result h1 {
+  width: 100%;
+  line-height: 64px;
+	color: #7452A4;
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.result p {
+  width: 100%;
+  line-height: 32px;
+	color: #7452A4;
+	font-size: 16px;
 }

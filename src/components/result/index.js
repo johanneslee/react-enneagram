@@ -1,14 +1,18 @@
 import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useContext } from 'preact/hooks';
 import style from './style.css';
-import { Options } from '../../datas/Options';
-import { Answer } from '../../datas/Answer';
+import enneagrams from '../../assets/jsons/enneagram.json';
+import { AppContext } from '../app';
 
-const Result = (props) => {
-  const type = props.type;
-
+const Result = () => {
+  const [type, setType] = useContext(AppContext);
+  const enneagram = enneagrams.filter(enneagram => enneagram.type === type)[0];
+  
 	return (
-		<>{type}</>
+		<article className={style.result}>
+      <h1>{`${enneagram.type}. ${enneagram.name[0].korean}`}</h1>
+      <p>{enneagram.description}</p>								
+    </article>
 	)
 };
 
