@@ -1,22 +1,8 @@
-# preact-enneagram
+# Preact-Enneagram
+Preact로 만든 간단한 성격유형검사 앱.
 
-## CLI Commands
+## 샘플 페이지:
+https://preact-enneagram.vercel.app
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# test the production build locally
-npm run serve
-
-# run tests with jest and enzyme
-npm run test
-```
-
-For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
+## Preact:
+Preact는 React보다 작고 가볍다. 반면, React는 기능이 더 많고 다양한 플러그인과 라이브러리를 지원하기 때문에, 프로젝트의 목적과 조건에 따라 적절히 선택해야 된다.
